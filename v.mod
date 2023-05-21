@@ -1,7 +1,7 @@
 Module {
 	name: 'crimson'
-	description: ''
-	version: ''
-	license: ''
+	description: 'Minimal minecraft server software written in V'
+	version: '0.1-dev'
+	license: 'MIT-0'
 	dependencies: []
 }
