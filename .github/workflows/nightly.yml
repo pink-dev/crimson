@@ -1,0 +1,31 @@
+name: Nightly
+
+on:
+  push:
+    branches:
+      - 'main'
+  pull_request:
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: ["ubuntu", "windows"]
+    runs-on: ${{ matrix.os }}-latest
+    steps:
+      - name: Install V
+        uses: vlang/setup-v@v1
+        with:
+          check-latest: true
+
+      - name: Checkout ${{ github.event.repository.name }}
+        uses: actions/checkout@v2
+
+      - name: Build prod and dev
+        run: |
+          v . -o crimson-${{ matrix.os }}-dev
+          v -prod . -o crimson-${{ matrix.os }}-prod
+      - uses: actions/upload-artifact@v3
+        with:
+          name: crimson-${{ matrix.os }}
+          path: crimson-*-*
