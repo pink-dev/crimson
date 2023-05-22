@@ -23,5 +23,6 @@ bin/
 *.db
 *.js
 
-# Logs
+# Logs & Configs
 *.log
+*.toml

@@ -63,6 +63,6 @@ fn (mut s Server) handle(mut socket net.TcpConn) {
 		if received_line == '' {
 			return
 		}
-		s.debug.debug('recived ${client_addr}: ${received_line}')
+		s.debug.debug('got "${received_line}" from ${client_addr}')
 	}
 }
